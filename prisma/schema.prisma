@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["fc_project"]
+}
+
+model Flashcard {
+  id         Int    @id @default(autoincrement())
+  question   String
+  answer     String
+  knownCount Int    @default(0)
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  @@schema("fc_project")
+}
+
+model Category {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  flashcards Flashcard[]
+
+  @@schema("fc_project")
+}
