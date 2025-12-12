@@ -1,6 +1,6 @@
 "use server";
 
-import { CARDS_PATH } from "@/constants";
+import { FLASHCARDS_PATH } from "@/constants";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -20,7 +20,7 @@ async function createFlashcard(formData) {
     },
   });
 
-  revalidatePath(CARDS_PATH, "page");
+  revalidatePath(FLASHCARDS_PATH, "page");
 
   return flashcard;
 }

@@ -1,1 +1,1 @@
-export const CARDS_PATH = "/cards";
+export const FLASHCARDS_PATH = "/flashcards";
