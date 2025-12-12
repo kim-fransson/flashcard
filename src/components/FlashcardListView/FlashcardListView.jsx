@@ -1,10 +1,15 @@
 import React from "react";
-import { listFlashcards } from "./helpers";
+import listFlashcards from "@/actions/list-flashcards";
+import LoadMoreClient from "../LoadMoreClient";
 
 async function FlashcardListView() {
-  const flashcards = await listFlashcards();
+  const {
+    flashcards: initialFlashcards,
+    nextOffset,
+    timestamp,
+  } = await listFlashcards();
 
-  if (flashcards.length === 0) {
+  if (initialFlashcards.length === 0) {
     return (
       <div>
         <h3>No cards yet</h3>
@@ -15,7 +20,28 @@ async function FlashcardListView() {
       </div>
     );
   }
-  return <div></div>;
+
+  return (
+    <div>
+      <ul>
+        {initialFlashcards.map(
+          ({ id, question, answer, category }) => (
+            <li key={id}>
+              <article>
+                <h3>{question}</h3>
+                <p>{answer}</p>
+                <footer>{category.name}</footer>
+              </article>
+            </li>
+          )
+        )}
+      </ul>
+
+      {nextOffset !== null && (
+        <LoadMoreClient key={timestamp} initialOffset={nextOffset} />
+      )}
+    </div>
+  );
 }
 
 export default FlashcardListView;
