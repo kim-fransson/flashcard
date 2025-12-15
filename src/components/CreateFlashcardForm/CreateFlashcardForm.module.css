@@ -1,0 +1,14 @@
+.base {
+  --background: var(--neutral-0);
+  --border: var(--neutral-900);
+
+  display: grid;
+  padding: 20px;
+  gap: 24px;
+
+  background: var(--background);
+  border-width: 1px 4px 4px 1px;
+  border-style: solid;
+  border-color: var(--border);
+  border-radius: 16px;
+}

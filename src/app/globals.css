@@ -18,6 +18,9 @@
 
   --background: var(--neutral-100);
   --foreground: var(--neutral-900);
+
+  --primary: var(--yellow-500);
+  --primary-foreground: var(--neutral-900);
 }
 
 /*
@@ -46,7 +49,8 @@ body {
   background: var(--background);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  padding: 16px;
 }
 
 img,

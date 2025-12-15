@@ -1,0 +1,42 @@
+.base {
+  --foreground: var(--neutral-900);
+  --border: var(--neutral-900);
+  --background: var(--neutral-0);
+  --placeholder: var(--neutral-600);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.input {
+  padding: 16px;
+  gap: 8px;
+  width: 100%;
+
+  height: 3.375rem;
+
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  font-weight: 500;
+  color: var(--foreground);
+
+  &::placeholder {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--placeholder);
+  }
+}
+
+.multiline {
+  min-height: 6.25rem;
+  resize: vertical;
+}

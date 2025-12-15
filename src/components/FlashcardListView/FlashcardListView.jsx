@@ -1,6 +1,9 @@
 import React from "react";
 import listFlashcards from "@/actions/list-flashcards";
 import LoadMoreClient from "../LoadMoreClient";
+import FlashCard from "../FlashCard";
+
+import { base } from "./FlashcardListView.module.css";
 
 async function FlashcardListView() {
   const {
@@ -23,19 +26,18 @@ async function FlashcardListView() {
 
   return (
     <div>
-      <ul>
+      <div className={base}>
         {initialFlashcards.map(
           ({ id, question, answer, category }) => (
-            <li key={id}>
-              <article>
-                <h3>{question}</h3>
-                <p>{answer}</p>
-                <footer>{category.name}</footer>
-              </article>
-            </li>
+            <FlashCard
+              key={id}
+              question={question}
+              answer={answer}
+              category={category.name}
+            />
           )
         )}
-      </ul>
+      </div>
 
       {nextOffset !== null && (
         <LoadMoreClient key={timestamp} initialOffset={nextOffset} />
