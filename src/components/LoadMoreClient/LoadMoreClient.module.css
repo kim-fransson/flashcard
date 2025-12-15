@@ -1,0 +1,8 @@
+.base {
+  display: grid;
+  gap: 24px;
+}
+
+.loadMoreBtn {
+  justify-self: center;
+}

@@ -21,6 +21,9 @@
 
   --primary: var(--yellow-500);
   --primary-foreground: var(--neutral-900);
+
+  --secondary: var(--neutral-0);
+  --secondary-foreground: var(--neutral-900);
 }
 
 /*

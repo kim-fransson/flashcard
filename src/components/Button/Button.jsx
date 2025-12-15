@@ -1,10 +1,14 @@
 import React from "react";
 
-import { base } from "./Button.module.css";
+import styles from "./Button.module.css";
+import clsx from "clsx";
 
-function Button({ children, ...delegated }) {
+function Button({ variant = "primary", children, ...delegated }) {
   return (
-    <button {...delegated} className={base}>
+    <button
+      {...delegated}
+      className={clsx(styles.base, styles[variant])}
+    >
       {children}
     </button>
   );

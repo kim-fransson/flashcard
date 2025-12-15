@@ -3,6 +3,10 @@
 import listFlashcards from "@/actions/list-flashcards";
 import React from "react";
 
+import { base, loadMoreBtn } from "./LoadMoreClient.module.css";
+import FlashCardList from "../FlashCardList";
+import Button from "../Button";
+
 function LoadMoreClient({ initialOffset }) {
   const [flashcards, setFlashcards] = React.useState([]);
   const [offset, setOffset] = React.useState(initialOffset);
@@ -15,21 +19,17 @@ function LoadMoreClient({ initialOffset }) {
   }
 
   return (
-    <div>
-      <ul>
-        {flashcards.map(({ id, question, answer, category }) => (
-          <li key={id}>
-            <article>
-              <h3>{question}</h3>
-              <p>{answer}</p>
-              <footer>{category.name}</footer>
-            </article>
-          </li>
-        ))}
-      </ul>
+    <div className={base}>
+      {flashcards.length !== 0 && (
+        <FlashCardList flashcards={flashcards} />
+      )}
 
       {offset !== null && (
-        <button onClick={handleLoadMore}>Load More</button>
+        <div className={loadMoreBtn}>
+          <Button variant='secondary' onClick={handleLoadMore}>
+            Load More
+          </Button>
+        </div>
       )}
     </div>
   );

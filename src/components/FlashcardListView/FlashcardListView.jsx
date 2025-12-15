@@ -1,9 +1,9 @@
 import React from "react";
 import listFlashcards from "@/actions/list-flashcards";
 import LoadMoreClient from "../LoadMoreClient";
-import FlashCard from "../FlashCard";
 
 import { base } from "./FlashcardListView.module.css";
+import FlashCardList from "../FlashCardList/FlashCardList";
 
 async function FlashcardListView() {
   const {
@@ -25,19 +25,8 @@ async function FlashcardListView() {
   }
 
   return (
-    <div>
-      <div className={base}>
-        {initialFlashcards.map(
-          ({ id, question, answer, category }) => (
-            <FlashCard
-              key={id}
-              question={question}
-              answer={answer}
-              category={category.name}
-            />
-          )
-        )}
-      </div>
+    <div className={base}>
+      <FlashCardList flashcards={initialFlashcards} />
 
       {nextOffset !== null && (
         <LoadMoreClient key={timestamp} initialOffset={nextOffset} />
