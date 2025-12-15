@@ -7,8 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 1.75rem;
-  padding: 0px 12px;
+  padding: 6px 12px;
   gap: 10px;
 
   background: var(--background);
@@ -16,4 +15,7 @@
   border: 1px solid var(--border);
   box-shadow: 1px 1px 0px var(--shadow);
   border-radius: 999px;
+
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
