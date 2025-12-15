@@ -1,15 +1,19 @@
 import React from "react";
 
+import Pill from "../Tag";
+import ProgressBar from "../ProgressBar";
+
 import {
   base,
   header,
   body,
   answerLabel,
   footer,
+  pillWrapper,
+  progressBarWrapper,
 } from "./Flashcard.module.css";
-import Pill from "../Tag";
 
-function FlashCard({ question, answer, category }) {
+function FlashCard({ question, answer, category, knownCount }) {
   return (
     <article className={base}>
       <header className={header}>
@@ -20,7 +24,13 @@ function FlashCard({ question, answer, category }) {
         {answer}
       </div>
       <footer className={footer}>
-        <Pill>{category}</Pill>
+        <div className={pillWrapper}>
+          <Pill>{category}</Pill>
+        </div>
+
+        <div className={progressBarWrapper}>
+          <ProgressBar value={knownCount} />
+        </div>
       </footer>
     </article>
   );
