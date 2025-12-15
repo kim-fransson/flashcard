@@ -35,7 +35,7 @@ function CreateFlashcardForm() {
 
       <div>
         <Button type='submit'>
-          <PlusCircle />
+          <PlusCircle size={20} />
           Create Card
         </Button>
       </div>

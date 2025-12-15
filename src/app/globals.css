@@ -54,6 +54,12 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   padding: 16px;
+  padding-bottom: 40px;
+
+  @media (min-width: 45rem) {
+    padding: 32px;
+    padding-bottom: 64px;
+  }
 }
 
 img,

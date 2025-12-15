@@ -18,6 +18,8 @@
   border: 1px solid var(--border);
   box-shadow: 2px 2px 0px var(--shadow);
   border-radius: 999px;
+
+  font-weight: 600;
 }
 
 .base.primary {
