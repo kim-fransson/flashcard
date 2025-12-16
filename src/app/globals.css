@@ -18,6 +18,8 @@
 
   --background: var(--neutral-100);
   --foreground: var(--neutral-900);
+  --focus: var(--blue-600);
+  --focus-foreground: var(--neutral-0);
 
   --primary: var(--yellow-500);
   --primary-foreground: var(--neutral-900);

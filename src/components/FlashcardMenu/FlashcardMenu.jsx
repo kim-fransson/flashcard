@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { EllipsisVertical, SquarePen, Trash2 } from "lucide-react";
 import {
   Button as RACButton,
   MenuTrigger,
@@ -8,8 +9,8 @@ import {
   Menu,
   MenuItem,
 } from "react-aria-components";
+
 import VisuallyHidden from "../VisuallyHidden";
-import { EllipsisVertical, SquarePen, Trash2 } from "lucide-react";
 
 import { trigger, menu, menuItem } from "./FlashcardMenu.module.css";
 
