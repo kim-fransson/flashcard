@@ -1,9 +1,9 @@
 .overlay {
   position: fixed;
   inset: 0;
-  width: 100%;
   background: var(--overlay);
   backdrop-filter: blur(1px);
+  padding: 8px;
   display: grid;
   place-content: center;
 }
@@ -21,7 +21,8 @@
   gap: 24px;
   outline: none;
 
-  min-width: 37.5rem;
+  width: calc(100vw - 16px);
+  max-width: 37.5rem;
   background: var(--background);
   border-width: 1px 4px 4px 1px;
   border-style: solid;
