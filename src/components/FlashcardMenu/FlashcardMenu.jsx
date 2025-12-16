@@ -16,7 +16,7 @@ import { trigger, menu, menuItem } from "./FlashcardMenu.module.css";
 import EditFlashCardModal from "../EditFlashCardModal";
 import DeleteFlashCardModal from "../DeleteFlashcardModal";
 
-function FlashcardMenu() {
+function FlashcardMenu({ flashcardId }) {
   let [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
   let [isDeleteModalOpen, setIsDeleteModalOpen] =
     React.useState(false);
@@ -52,6 +52,7 @@ function FlashcardMenu() {
         onOpenChange={setIsEditModalOpen}
       />
       <DeleteFlashCardModal
+        flashcardId={flashcardId}
         isOpen={isDeleteModalOpen}
         onOpenChange={setIsDeleteModalOpen}
       />

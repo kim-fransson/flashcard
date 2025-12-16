@@ -1,0 +1,18 @@
+.contentWrapper {
+  --border: var(--neutral-900);
+  padding: var(--padding);
+}
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 20px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 32px 16px 32px;
+  border-top: 1px solid var(--border);
+}

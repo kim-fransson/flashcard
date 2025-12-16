@@ -13,13 +13,13 @@ import {
 import KnownCount from "../KnownCount";
 import FlashcardMenu from "../FlashcardMenu";
 
-function FlashCard({ question, answer, category, knownCount }) {
+function FlashCard({ id, question, answer, category, knownCount }) {
   return (
     <article className={base}>
       <header className={header}>
         <h3>{question}</h3>
         <div className={menuWrapper}>
-          <FlashcardMenu />
+          <FlashcardMenu flashcardId={id} />
         </div>
       </header>
       <div className={body}>

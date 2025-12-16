@@ -10,6 +10,7 @@ function FlashCardList({ flashcards }) {
         ({ id, question, answer, category, knownCount }) => (
           <FlashCard
             key={id}
+            id={id}
             question={question}
             answer={answer}
             category={category.name}

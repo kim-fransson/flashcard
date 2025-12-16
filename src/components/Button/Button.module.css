@@ -31,3 +31,9 @@
   --color: var(--secondary-foreground);
   --background: var(--secondary);
 }
+
+.base.border {
+  --background: transparent;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}

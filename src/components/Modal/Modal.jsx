@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { X } from "lucide-react";
 import {
   Button as RACButton,
   Modal as RACModal,
@@ -9,6 +10,8 @@ import {
   ModalOverlay,
 } from "react-aria-components";
 
+import VisuallyHidden from "../VisuallyHidden";
+
 import {
   overlay,
   modal,
@@ -16,8 +19,6 @@ import {
   heading as headingStyles,
   closeBtn,
 } from "./Modal.module.css";
-import VisuallyHidden from "../VisuallyHidden";
-import { Cross, X } from "lucide-react";
 
 function Modal({ heading, isOpen, onOpenChange, children }) {
   return (
