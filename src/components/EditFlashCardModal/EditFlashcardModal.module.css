@@ -1,13 +1,10 @@
 .contentWrapper {
   --border: var(--neutral-900);
   --foreground: var(--neutral-900);
-}
-
-.textContent {
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 24px 20px;
+  gap: 24px;
 }
 
 .heading {
@@ -16,10 +13,12 @@
   color: var(--foreground);
 }
 
-.buttonGroup {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 12px 32px 16px 32px;
-  border-top: 1px solid var(--border);
+.updateForm {
+  display: grid;
+  gap: 16px;
+}
+
+.submitBtn {
+  margin-top: 8px;
+  justify-self: end;
 }

@@ -16,7 +16,7 @@ import { trigger, menu, menuItem } from "./FlashcardMenu.module.css";
 import EditFlashCardModal from "../EditFlashCardModal";
 import DeleteFlashCardModal from "../DeleteFlashcardModal";
 
-function FlashcardMenu({ flashcardId }) {
+function FlashcardMenu({ flashcardId, question, answer, category }) {
   let [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
   let [isDeleteModalOpen, setIsDeleteModalOpen] =
     React.useState(false);
@@ -48,6 +48,10 @@ function FlashcardMenu({ flashcardId }) {
         </Popover>
       </MenuTrigger>
       <EditFlashCardModal
+        flashcardId={flashcardId}
+        question={question}
+        answer={answer}
+        category={category}
         isOpen={isEditModalOpen}
         onOpenChange={setIsEditModalOpen}
       />

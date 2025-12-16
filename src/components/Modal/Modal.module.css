@@ -29,12 +29,6 @@
   outline: none;
 }
 
-.heading {
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: var(--foreground);
-}
-
 .closeBtn {
   position: absolute;
   cursor: pointer;

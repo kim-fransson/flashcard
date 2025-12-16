@@ -19,7 +19,12 @@ function FlashCard({ id, question, answer, category, knownCount }) {
       <header className={header}>
         <h3>{question}</h3>
         <div className={menuWrapper}>
-          <FlashcardMenu flashcardId={id} />
+          <FlashcardMenu
+            flashcardId={id}
+            question={question}
+            answer={answer}
+            category={category}
+          />
         </div>
       </header>
       <div className={body}>

@@ -6,21 +6,14 @@ import {
   Button as RACButton,
   Modal as RACModal,
   Dialog,
-  Heading,
   ModalOverlay,
 } from "react-aria-components";
 
 import VisuallyHidden from "../VisuallyHidden";
 
-import {
-  overlay,
-  modal,
-  dialog,
-  heading as headingStyles,
-  closeBtn,
-} from "./Modal.module.css";
+import { overlay, modal, dialog, closeBtn } from "./Modal.module.css";
 
-function Modal({ heading, isOpen, onOpenChange, children }) {
+function Modal({ isOpen, onOpenChange, children }) {
   return (
     <ModalOverlay
       isDismissable
@@ -30,9 +23,6 @@ function Modal({ heading, isOpen, onOpenChange, children }) {
     >
       <RACModal className={modal}>
         <Dialog className={dialog}>
-          <Heading className={headingStyles} slot='title'>
-            {heading}
-          </Heading>
           {children}
           <RACButton className={closeBtn} slot='close'>
             <VisuallyHidden>Close Modal</VisuallyHidden>
