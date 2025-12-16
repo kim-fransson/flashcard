@@ -8,14 +8,19 @@ import {
   body,
   answerLabel,
   footer,
+  menuWrapper,
 } from "./Flashcard.module.css";
 import KnownCount from "../KnownCount";
+import FlashcardMenu from "../FlashcardMenu";
 
 function FlashCard({ question, answer, category, knownCount }) {
   return (
     <article className={base}>
       <header className={header}>
         <h3>{question}</h3>
+        <div className={menuWrapper}>
+          <FlashcardMenu />
+        </div>
       </header>
       <div className={body}>
         <span className={answerLabel}>Answer:</span>
