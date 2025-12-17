@@ -5,8 +5,6 @@ import deleteFlashcard from "@/actions/delete-flashcard";
 import Button from "../Button";
 import BaseDialog from "../BaseDialog";
 
-import styles from "./DeleteFlashcardDialog.module.css";
-
 function DeleteFlashCardModal({
   flashcardId,
   onOpenChange,
@@ -16,17 +14,9 @@ function DeleteFlashCardModal({
     <BaseDialog
       heading='Delete this card?'
       footer={
-        <div className={styles.buttonGroup}>
-          <Button
-            onClick={() => onOpenChange(false)}
-            variant='border'
-          >
-            Cancel
-          </Button>
-          <Button onClick={() => deleteFlashcard(flashcardId)}>
-            Delete Card
-          </Button>
-        </div>
+        <Button onClick={() => deleteFlashcard(flashcardId)}>
+          Delete Card
+        </Button>
       }
       onOpenChange={onOpenChange}
       {...delegated}

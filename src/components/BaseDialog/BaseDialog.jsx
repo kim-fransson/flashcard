@@ -8,11 +8,13 @@ import {
   Dialog as RACDialog,
   ModalOverlay as RACModalOverlay,
   Heading as RACHeading,
+  Pressable,
 } from "react-aria-components";
 
 import VisuallyHidden from "../VisuallyHidden";
 
 import styles from "./BaseDialog.module.css";
+import Button from "../Button";
 
 function BaseDialog({ children, heading, footer, ...delegated }) {
   return (
@@ -25,7 +27,15 @@ function BaseDialog({ children, heading, footer, ...delegated }) {
             </RACHeading>
             {children}
           </div>
-          <div className={styles.footer}>{footer}</div>
+          <div className={styles.footer}>
+            <Button
+              onClick={() => delegated.onOpenChange(false)}
+              variant='border'
+            >
+              Cancel
+            </Button>
+            {footer}
+          </div>
           <RACButton className={styles.closeBtn} slot='close'>
             <VisuallyHidden>Close Modal</VisuallyHidden>
             <X />
