@@ -11,15 +11,15 @@ import BaseDialog from "../BaseDialog";
 
 import styles from "./EditFlashcardDialog.module.css";
 import { useSpinDelay } from "spin-delay";
+import { toast } from "@/helpers";
 
-function EditFlashCardModal({
-  flashcardId,
-  question,
-  answer,
-  category,
+function EditFlashcardModal({
+  flashcard,
   onOpenChange,
   ...delegated
 }) {
+  const { id: flashcardId, question, answer, category } = flashcard;
+
   const [state, formAction, pending] = React.useActionState(
     updateFlashcard.bind(null, flashcardId),
     { success: false }
@@ -32,6 +32,7 @@ function EditFlashCardModal({
 
   React.useEffect(() => {
     if (state.success) {
+      toast("Card updated successfully.");
       onOpenChange(false);
     }
   }, [state, onOpenChange]);
@@ -84,7 +85,7 @@ function EditFlashCardModal({
         />
 
         <TextField
-          defaultValue={category}
+          defaultValue={category.name}
           label='Category'
           name='category'
           placeholder='e.g., Geography'
@@ -95,4 +96,4 @@ function EditFlashCardModal({
   );
 }
 
-export default EditFlashCardModal;
+export default EditFlashcardModal;

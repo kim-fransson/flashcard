@@ -7,20 +7,29 @@ import deleteFlashcard from "@/actions/delete-flashcard";
 import Button from "../Button";
 import BaseDialog from "../BaseDialog";
 import { useSpinDelay } from "spin-delay";
+import { toast } from "@/helpers";
 
 function DeleteFlashCardModal({
-  flashcardId,
+  flashcard,
   onOpenChange,
   ...delegated
 }) {
-  const [_state, action, pending] = React.useActionState(
-    () => deleteFlashcard(flashcardId),
+  const [state, action, pending] = React.useActionState(
+    () => deleteFlashcard(flashcard.id),
     { success: false }
   );
+
   const showLoading = useSpinDelay(pending, {
     delay: 500,
     minDuration: 200,
   });
+
+  React.useEffect(() => {
+    if (state.success) {
+      toast("Card deleted.");
+      onOpenChange(false);
+    }
+  }, [state, onOpenChange]);
 
   return (
     <BaseDialog

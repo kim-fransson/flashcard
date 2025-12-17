@@ -1,2 +1,2 @@
-export * from "./EditFlashCardDialog";
-export { default } from "./EditFlashCardDialog";
+export * from "./EditFlashcardDialog";
+export { default } from "./EditFlashcardDialog";

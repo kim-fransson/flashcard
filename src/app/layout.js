@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
         </MaxWidthWrapper>
+        <Toaster position='top-right' />
       </body>
     </html>
   );

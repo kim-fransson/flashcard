@@ -13,7 +13,15 @@ import {
 import KnownCount from "../KnownCount";
 import FlashcardMenu from "../FlashcardMenu";
 
-function FlashCard({ id, question, answer, category, knownCount }) {
+function FlashCard({
+  id,
+  question,
+  answer,
+  category,
+  knownCount,
+  onDelete,
+  onEdit,
+}) {
   return (
     <article className={base}>
       <header className={header}>
@@ -24,6 +32,8 @@ function FlashCard({ id, question, answer, category, knownCount }) {
             question={question}
             answer={answer}
             category={category}
+            onDelete={onDelete}
+            onEdit={onEdit}
           />
         </div>
       </header>
