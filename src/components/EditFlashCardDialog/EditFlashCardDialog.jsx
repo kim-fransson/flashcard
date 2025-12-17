@@ -10,6 +10,7 @@ import TextField from "../TextField";
 import BaseDialog from "../BaseDialog";
 
 import styles from "./EditFlashcardDialog.module.css";
+import { useSpinDelay } from "spin-delay";
 
 function EditFlashCardModal({
   flashcardId,
@@ -19,10 +20,15 @@ function EditFlashCardModal({
   onOpenChange,
   ...delegated
 }) {
-  const [state, formAction, _pending] = React.useActionState(
+  const [state, formAction, pending] = React.useActionState(
     updateFlashcard.bind(null, flashcardId),
     { success: false }
   );
+
+  const showLoading = useSpinDelay(pending, {
+    delay: 500,
+    minDuration: 200,
+  });
 
   React.useEffect(() => {
     if (state.success) {
@@ -33,12 +39,34 @@ function EditFlashCardModal({
   return (
     <BaseDialog
       heading='Edit your card'
-      footer={<Button type='submit'>Update Card</Button>}
+      footer={
+        <>
+          <Button
+            disabled={pending}
+            onClick={() => onOpenChange(false)}
+            variant='border'
+          >
+            Cancel
+          </Button>
+          <Button
+            form='edit-flashcard-form'
+            disabled={pending}
+            type='submit'
+          >
+            {showLoading ? "Updating Card..." : "Update Card"}
+          </Button>
+        </>
+      }
       onOpenChange={onOpenChange}
       {...delegated}
     >
-      <Form className={styles.form} action={formAction}>
+      <Form
+        id='edit-flashcard-form'
+        className={styles.form}
+        action={formAction}
+      >
         <TextField
+          autoFocus
           defaultValue={question}
           label='Question'
           name='question'

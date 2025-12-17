@@ -4,7 +4,7 @@ import { FLASHCARDS_PATH } from "@/constants";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-async function createFlashcard(formData) {
+async function createFlashcard(_prevState, formData) {
   const { question, answer, category } = Object.fromEntries(formData);
 
   const flashcard = await prisma.flashcard.create({
@@ -22,7 +22,7 @@ async function createFlashcard(formData) {
 
   revalidatePath(FLASHCARDS_PATH, "page");
 
-  return flashcard;
+  return { success: true, flashcard };
 }
 
 export default createFlashcard;

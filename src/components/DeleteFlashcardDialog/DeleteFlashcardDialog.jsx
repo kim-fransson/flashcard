@@ -1,22 +1,48 @@
+"use client";
+
 import React from "react";
 
 import deleteFlashcard from "@/actions/delete-flashcard";
 
 import Button from "../Button";
 import BaseDialog from "../BaseDialog";
+import { useSpinDelay } from "spin-delay";
 
 function DeleteFlashCardModal({
   flashcardId,
   onOpenChange,
   ...delegated
 }) {
+  const [_state, action, pending] = React.useActionState(
+    () => deleteFlashcard(flashcardId),
+    { success: false }
+  );
+  const showLoading = useSpinDelay(pending, {
+    delay: 500,
+    minDuration: 200,
+  });
+
   return (
     <BaseDialog
+      role='alertdialog'
       heading='Delete this card?'
       footer={
-        <Button onClick={() => deleteFlashcard(flashcardId)}>
-          Delete Card
-        </Button>
+        <>
+          <Button
+            disabled={pending}
+            autoFocus
+            onClick={() => onOpenChange(false)}
+            variant='border'
+          >
+            Cancel
+          </Button>
+          <Button
+            disabled={pending}
+            onClick={() => React.startTransition(action)}
+          >
+            {showLoading ? "Deleting Card..." : "Delete Card"}
+          </Button>
+        </>
       }
       onOpenChange={onOpenChange}
       {...delegated}

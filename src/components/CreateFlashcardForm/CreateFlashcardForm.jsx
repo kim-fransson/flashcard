@@ -1,16 +1,30 @@
+"use client";
+
 import React from "react";
 import { PlusCircle } from "lucide-react";
 import Form from "next/form";
+import { useSpinDelay } from "spin-delay";
+
 import createFlashcard from "@/actions/create-flashcard";
 
 import Button from "../Button";
 import TextField from "../TextField";
 
-import { base } from "./CreateFlashcardForm.module.css";
+import styles from "./CreateFlashcardForm.module.css";
 
 function CreateFlashcardForm() {
+  const [_state, formAction, pending] = React.useActionState(
+    createFlashcard,
+    { success: false }
+  );
+
+  const showLoading = useSpinDelay(pending, {
+    delay: 500,
+    minDuration: 200,
+  });
+
   return (
-    <Form className={base} action={createFlashcard}>
+    <Form className={styles.base} action={formAction}>
       <TextField
         label='Question'
         name='question'
@@ -36,7 +50,7 @@ function CreateFlashcardForm() {
       <div>
         <Button type='submit'>
           <PlusCircle size={20} />
-          Create Card
+          {showLoading ? "Creating Card..." : "Create Card"}
         </Button>
       </div>
     </Form>

@@ -37,3 +37,7 @@
   border: 1px solid var(--border);
   box-shadow: none;
 }
+
+.base.disabled {
+  cursor: not-allowed;
+}

@@ -12,6 +12,7 @@ async function deleteFlashcard(id) {
   });
 
   revalidatePath(FLASHCARDS_PATH, "page");
+  return { success: true };
 }
 
 export default deleteFlashcard;

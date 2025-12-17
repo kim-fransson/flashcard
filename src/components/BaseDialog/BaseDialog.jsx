@@ -11,27 +11,24 @@ import {
 import styles from "./BaseDialog.module.css";
 import Button from "../Button";
 
-function BaseDialog({ children, heading, footer, ...delegated }) {
+function BaseDialog({
+  children,
+  heading,
+  footer,
+  role = "dialog",
+  ...delegated
+}) {
   return (
     <RACModalOverlay className={styles.overlay} {...delegated}>
       <RACModal className={styles.modal}>
-        <RACDialog className={styles.dialog}>
+        <RACDialog role={role} className={styles.dialog}>
           <div className={styles.content}>
             <RACHeading className={styles.heading} slot='title'>
               {heading}
             </RACHeading>
             {children}
           </div>
-          <div className={styles.footer}>
-            <Button
-              slot='close'
-              onClick={() => delegated.onOpenChange(false)}
-              variant='border'
-            >
-              Cancel
-            </Button>
-            {footer}
-          </div>
+          <div className={styles.footer}>{footer}</div>
         </RACDialog>
       </RACModal>
     </RACModalOverlay>
