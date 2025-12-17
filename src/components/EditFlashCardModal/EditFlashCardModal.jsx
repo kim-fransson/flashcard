@@ -24,15 +24,12 @@ function EditFlashCardModal({
   onOpenChange,
   ...delegated
 }) {
-  const [state, formAction, pending] = React.useActionState(
+  const [state, formAction, _pending] = React.useActionState(
     updateFlashcard.bind(null, flashcardId),
     { success: false }
   );
 
   React.useEffect(() => {
-    console.log({
-      state,
-    });
     if (state.success) {
       onOpenChange(false);
     }
