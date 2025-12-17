@@ -9,7 +9,7 @@ import BaseDialog from "../BaseDialog";
 import { useSpinDelay } from "spin-delay";
 import { toast } from "@/helpers";
 
-function DeleteFlashCardModal({
+function DeleteFlashCardDialog({
   flashcard,
   onOpenChange,
   ...delegated
@@ -61,4 +61,4 @@ function DeleteFlashCardModal({
   );
 }
 
-export default DeleteFlashCardModal;
+export default DeleteFlashCardDialog;

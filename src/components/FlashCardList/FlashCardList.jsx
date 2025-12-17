@@ -4,8 +4,8 @@ import React from "react";
 
 import { base } from "./FlashCardList.module.css";
 import FlashCard from "../FlashCard";
-import DeleteFlashCardModal from "../DeleteFlashcardDialog";
-import EditFlashcardModal from "../EditFlashcardDialog";
+import DeleteFlashCardDialog from "../DeleteFlashcardDialog";
+import EditFlashcardDialog from "../EditFlashcardDialog";
 
 function FlashCardList({ flashcards }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] =
@@ -40,14 +40,14 @@ function FlashCardList({ flashcards }) {
         ))}
       </div>
       {selectedFlashcard && (
-        <DeleteFlashCardModal
+        <DeleteFlashCardDialog
           isOpen={isDeleteModalOpen}
           onOpenChange={setIsDeleteModalOpen}
           flashcard={selectedFlashcard}
         />
       )}
       {selectedFlashcard && (
-        <EditFlashcardModal
+        <EditFlashcardDialog
           isOpen={isEditModalOpen}
           onOpenChange={setIsEditModalOpen}
           flashcard={selectedFlashcard}

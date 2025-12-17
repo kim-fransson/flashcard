@@ -13,7 +13,7 @@ import styles from "./EditFlashcardDialog.module.css";
 import { useSpinDelay } from "spin-delay";
 import { toast } from "@/helpers";
 
-function EditFlashcardModal({
+function EditFlashcardDialog({
   flashcard,
   onOpenChange,
   ...delegated
@@ -96,4 +96,4 @@ function EditFlashcardModal({
   );
 }
 
-export default EditFlashcardModal;
+export default EditFlashcardDialog;
