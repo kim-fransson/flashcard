@@ -2,10 +2,11 @@
 
 import React from "react";
 
-import { base } from "./FlashcardList.module.css";
 import Flashcard from "../Flashcard";
 import DeleteFlashcardDialog from "../DeleteFlashcardDialog";
 import EditFlashcardDialog from "../EditFlashcardDialog";
+
+import styles from "./FlashcardList.module.css";
 
 function FlashcardList({ flashcards }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] =
@@ -25,7 +26,7 @@ function FlashcardList({ flashcards }) {
 
   return (
     <>
-      <div className={base}>
+      <div className={styles.base}>
         {flashcards.map((flashcard) => (
           <Flashcard
             key={flashcard.id}
