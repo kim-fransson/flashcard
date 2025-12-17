@@ -1,4 +1,9 @@
 .overlay {
+  --foreground: var(--neutral-900);
+  --background: var(--neutral-0);
+  --border: var(--neutral-900);
+  --overlay: hsla(24, 96%, 9%, 70%);
+
   position: fixed;
   inset: 0;
   background: var(--overlay);
@@ -9,10 +14,6 @@
 }
 
 .modal {
-  --foreground: var(--neutral-900);
-  --background: var(--neutral-0);
-  --border: var(--neutral-900);
-
   position: relative;
   outline: none;
 
@@ -25,8 +26,22 @@
   border-radius: 16px;
 }
 
-.dialog {
-  outline: none;
+.heading {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--foreground);
+  margin-bottom: 8px;
+}
+
+.content {
+  padding: 24px 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border);
+  padding: 16px 20px 16px 16px;
 }
 
 .closeBtn {

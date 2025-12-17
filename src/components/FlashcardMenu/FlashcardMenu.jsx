@@ -13,8 +13,8 @@ import {
 import VisuallyHidden from "../VisuallyHidden";
 
 import { trigger, menu, menuItem } from "./FlashcardMenu.module.css";
-import EditFlashCardModal from "../EditFlashCardModal";
-import DeleteFlashCardModal from "../DeleteFlashcardModal";
+import EditFlashCardModal from "../EditFlashCardDialog";
+import DeleteFlashCardModal from "../DeleteFlashcardDialog";
 
 function FlashcardMenu({ flashcardId, question, answer, category }) {
   let [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
