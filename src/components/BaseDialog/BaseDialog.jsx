@@ -1,17 +1,12 @@
 "use client";
 
 import React from "react";
-import { X } from "lucide-react";
 import {
-  Button as RACButton,
   Modal as RACModal,
   Dialog as RACDialog,
   ModalOverlay as RACModalOverlay,
   Heading as RACHeading,
-  Pressable,
 } from "react-aria-components";
-
-import VisuallyHidden from "../VisuallyHidden";
 
 import styles from "./BaseDialog.module.css";
 import Button from "../Button";
@@ -29,6 +24,7 @@ function BaseDialog({ children, heading, footer, ...delegated }) {
           </div>
           <div className={styles.footer}>
             <Button
+              slot='close'
               onClick={() => delegated.onOpenChange(false)}
               variant='border'
             >
@@ -36,10 +32,6 @@ function BaseDialog({ children, heading, footer, ...delegated }) {
             </Button>
             {footer}
           </div>
-          <RACButton className={styles.closeBtn} slot='close'>
-            <VisuallyHidden>Close Modal</VisuallyHidden>
-            <X />
-          </RACButton>
         </RACDialog>
       </RACModal>
     </RACModalOverlay>
