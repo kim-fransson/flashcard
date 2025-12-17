@@ -2,9 +2,9 @@ import React from "react";
 import listFlashcards from "@/actions/list-flashcards";
 
 import LoadMoreClient from "../LoadMoreClient";
-import FlashcardList from "../FlashcardList";
 
 import { base } from "./FlashcardListView.module.css";
+import FlashcardList from "../FlashcardList";
 
 async function FlashcardListView() {
   const {

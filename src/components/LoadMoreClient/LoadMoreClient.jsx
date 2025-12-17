@@ -4,8 +4,8 @@ import listFlashcards from "@/actions/list-flashcards";
 import React from "react";
 
 import { base, loadMoreBtn } from "./LoadMoreClient.module.css";
-import FlashcardList from "../FlashcardList";
 import Button from "../Button";
+import FlashcardList from "../FlashcardList";
 
 function LoadMoreClient({ initialOffset }) {
   const [flashcards, setFlashcards] = React.useState([]);
