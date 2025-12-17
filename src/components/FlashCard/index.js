@@ -1,2 +1,2 @@
-export * from './FlashCard';
-export { default } from './FlashCard';
+export * from "./Flashcard";
+export { default } from "./Flashcard";

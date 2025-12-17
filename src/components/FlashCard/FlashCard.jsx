@@ -13,7 +13,7 @@ import {
 import KnownCount from "../KnownCount";
 import FlashcardMenu from "../FlashcardMenu";
 
-function FlashCard({
+function Flashcard({
   id,
   question,
   answer,
@@ -49,4 +49,4 @@ function FlashCard({
   );
 }
 
-export default FlashCard;
+export default Flashcard;

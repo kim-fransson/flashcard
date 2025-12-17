@@ -1,2 +1,2 @@
-export * from './FlashCardList';
-export { default } from './FlashCardList';
+export * from "./FlashcardList";
+export { default } from "./FlashcardList";

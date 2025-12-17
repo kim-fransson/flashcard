@@ -3,7 +3,7 @@ import listFlashcards from "@/actions/list-flashcards";
 import LoadMoreClient from "../LoadMoreClient";
 
 import { base } from "./FlashcardListView.module.css";
-import FlashCardList from "../FlashCardList/FlashCardList";
+import FlashcardList from "../FlashcardList/FlashcardList";
 
 async function FlashcardListView() {
   const {
@@ -26,7 +26,7 @@ async function FlashcardListView() {
 
   return (
     <div className={base}>
-      <FlashCardList flashcards={initialFlashcards} />
+      <FlashcardList flashcards={initialFlashcards} />
 
       {nextOffset !== null && (
         <LoadMoreClient key={timestamp} initialOffset={nextOffset} />

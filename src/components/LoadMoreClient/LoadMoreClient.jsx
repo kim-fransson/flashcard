@@ -4,7 +4,7 @@ import listFlashcards from "@/actions/list-flashcards";
 import React from "react";
 
 import { base, loadMoreBtn } from "./LoadMoreClient.module.css";
-import FlashCardList from "../FlashCardList";
+import FlashcardList from "../FlashcardList";
 import Button from "../Button";
 
 function LoadMoreClient({ initialOffset }) {
@@ -21,7 +21,7 @@ function LoadMoreClient({ initialOffset }) {
   return (
     <div className={base}>
       {flashcards.length !== 0 && (
-        <FlashCardList flashcards={flashcards} />
+        <FlashcardList flashcards={flashcards} />
       )}
 
       {offset !== null && (

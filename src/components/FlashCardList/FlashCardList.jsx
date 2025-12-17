@@ -2,12 +2,12 @@
 
 import React from "react";
 
-import { base } from "./FlashCardList.module.css";
-import FlashCard from "../FlashCard";
-import DeleteFlashCardDialog from "../DeleteFlashcardDialog";
+import { base } from "./FlashcardList.module.css";
+import Flashcard from "../Flashcard";
+import DeleteFlashcardDialog from "../DeleteFlashcardDialog";
 import EditFlashcardDialog from "../EditFlashcardDialog";
 
-function FlashCardList({ flashcards }) {
+function FlashcardList({ flashcards }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] =
     React.useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
@@ -27,7 +27,7 @@ function FlashCardList({ flashcards }) {
     <>
       <div className={base}>
         {flashcards.map((flashcard) => (
-          <FlashCard
+          <Flashcard
             key={flashcard.id}
             id={flashcard.id}
             question={flashcard.question}
@@ -40,7 +40,7 @@ function FlashCardList({ flashcards }) {
         ))}
       </div>
       {selectedFlashcard && (
-        <DeleteFlashCardDialog
+        <DeleteFlashcardDialog
           isOpen={isDeleteModalOpen}
           onOpenChange={setIsDeleteModalOpen}
           flashcard={selectedFlashcard}
@@ -57,4 +57,4 @@ function FlashCardList({ flashcards }) {
   );
 }
 
-export default FlashCardList;
+export default FlashcardList;
