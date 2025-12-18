@@ -21,7 +21,7 @@ function FlashcardMenu({ onDelete, onEdit }) {
         <VisuallyHidden>Open Flashcard settings</VisuallyHidden>
         <EllipsisVertical />
       </RACButton>
-      <Popover>
+      <Popover placement='bottom right'>
         <Menu className={menu}>
           <MenuItem className={menuItem} onAction={onEdit}>
             <SquarePen />

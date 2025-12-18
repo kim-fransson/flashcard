@@ -12,13 +12,12 @@ function Button({
   return (
     <button
       {...delegated}
-      className={clsx(
-        styles.base,
-        styles[variant],
-        disabled && styles.disabled
-      )}
+      className={clsx(styles.base, disabled && styles.disabled)}
     >
-      {children}
+      {variant !== "border" && <span className={styles.back} />}
+      <span className={clsx(styles.front, styles[variant])}>
+        {children}
+      </span>
     </button>
   );
 }

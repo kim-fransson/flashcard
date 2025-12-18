@@ -1,41 +1,85 @@
 .base {
-  --border: var(--neutral-900);
-  --shadow: var(--neutral-900);
-  --color: var(--primary-foreground);
-  --background: var(--primary);
+  position: relative;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
 
+  @media (hover: hover) {
+    &:hover .back {
+      transform: translate(4px, 4px);
+    }
+
+    &:hover .front.border {
+      background: var(--neutral-100);
+      transition: background 150ms ease-out;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  &:focus-visible .back {
+    transform: translate(0px, 0px);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover .back,
+    &:focus-visible .back {
+      transition: transform 150ms ease-out;
+    }
+  }
+}
+
+.front {
+  --background: var(--primary);
+  --border: var(--neutral-900);
+  --foreground: var(--primary-foreground);
+  position: relative;
   display: flex;
+  font-weight: 600;
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
   gap: 8px;
-  cursor: pointer;
-
-  height: 2.6875rem;
-
   background: var(--background);
-  color: var(--color);
+  color: var(--foreground);
   border: 1px solid var(--border);
-  box-shadow: 2px 2px 0px var(--shadow);
-  border-radius: 999px;
-
-  font-weight: 600;
+  border-radius: inherit;
+  height: 2.6875rem;
 }
 
-.base.primary {
-  --color: var(--primary-foreground);
+.back {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transform: translate(2px, 2px);
+  background: var(--neutral-900);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 300ms ease-in;
+  }
+}
+
+.front.primary {
+  --foreground: var(--primary-foreground);
   --background: var(--primary);
 }
 
-.base.secondary {
-  --color: var(--secondary-foreground);
+.front.secondary {
+  --foreground: var(--secondary-foreground);
   --background: var(--secondary);
 }
 
-.base.border {
-  --background: transparent;
+.front.border {
+  --background: var(--neutral-0);
   border: 1px solid var(--border);
   box-shadow: none;
+  transition: background 300ms ease-in;
 }
 
 .base.disabled {
