@@ -8,19 +8,22 @@ import {
   Popover,
   Menu,
   MenuItem,
+  Pressable,
 } from "react-aria-components";
 
-import VisuallyHidden from "../VisuallyHidden";
-
-import { trigger, menu, menuItem } from "./FlashcardMenu.module.css";
+import { menu, menuItem } from "./FlashcardMenu.module.css";
+import IconButton from "../IconButton";
 
 function FlashcardMenu({ onDelete, onEdit }) {
   return (
     <MenuTrigger>
-      <RACButton className={trigger} aria-label='Menu'>
-        <VisuallyHidden>Open Flashcard settings</VisuallyHidden>
-        <EllipsisVertical />
-      </RACButton>
+      <Pressable>
+        <IconButton
+          label='Open Flashcard settings'
+          icon='ellipsis-vertical'
+        />
+      </Pressable>
+
       <Popover placement='bottom right'>
         <Menu className={menu}>
           <MenuItem className={menuItem} onAction={onEdit}>
