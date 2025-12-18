@@ -1,19 +1,18 @@
 "use client";
 
-import { X } from "lucide-react";
 import styles from "./Toast.module.css";
 import { toast as sonnerToast } from "sonner";
+import IconButton from "../IconButton";
 
 function Toast({ message, id }) {
   return (
     <div className={styles.base}>
       <p className={styles.message}>{message}</p>
-      <button
-        className={styles.close}
+      <IconButton
         onClick={() => sonnerToast.dismiss(id)}
-      >
-        <X size={20} />
-      </button>
+        icon='x'
+        label='Dismiss message'
+      />
     </div>
   );
 }

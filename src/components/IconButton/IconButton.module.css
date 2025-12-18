@@ -1,7 +1,10 @@
 .base {
   --hover-distance: 2px;
-  position: relative;
+  --hover-out-speed: 150ms;
+  --hover-in-speed: 300ms;
   --border: transparent;
+
+  position: relative;
   cursor: pointer;
   background: none;
   border: none;
@@ -43,7 +46,8 @@
 
   @media (prefers-reduced-motion: no-preference) {
     &:hover .front {
-      transition: transform 250ms ease-out, background 0ms linear 0ms;
+      transition: transform var(--hover-out-speed) ease-out,
+        background 0ms linear 0ms;
     }
   }
 }
@@ -61,8 +65,9 @@
   background: var(--background);
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: transform 500ms ease-in, border 200ms ease-in 400ms,
-      background 0ms linear 500ms;
+    transition: transform var(--hover-in-speed) ease-in,
+      border 200ms ease-in calc(var(--hover-in-speed) - 150ms),
+      background 0ms linear var(--hover-in-speed);
   }
 }
 
@@ -74,6 +79,6 @@
   background: var(--background);
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: background 0ms linear 500ms;
+    transition: background 0ms linear var(--hover-in-speed);
   }
 }
