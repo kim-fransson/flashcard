@@ -2,3 +2,9 @@
   display: grid;
   gap: 24px;
 }
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

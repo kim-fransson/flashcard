@@ -3,15 +3,16 @@ import listFlashcards from "@/actions/list-flashcards";
 
 import LoadMoreClient from "../LoadMoreClient";
 
-import { base } from "./FlashcardListView.module.css";
+import styles from "./FlashcardListView.module.css";
 import FlashcardList from "../FlashcardList";
+import ShuffleButton from "../ShuffleButton";
 
-async function FlashcardListView() {
+async function FlashcardListView({ filters }) {
   const {
     flashcards: initialFlashcards,
     nextOffset,
     timestamp,
-  } = await listFlashcards();
+  } = await listFlashcards(0, filters.shuffle);
 
   if (initialFlashcards.length === 0) {
     return (
@@ -26,11 +27,19 @@ async function FlashcardListView() {
   }
 
   return (
-    <div className={base}>
+    <div className={styles.base}>
+      <div className={styles.actions}>
+        <div></div>
+        <ShuffleButton />
+      </div>
       <FlashcardList flashcards={initialFlashcards} />
 
       {nextOffset !== null && (
-        <LoadMoreClient key={timestamp} initialOffset={nextOffset} />
+        <LoadMoreClient
+          key={timestamp}
+          initialOffset={nextOffset}
+          shuffle={filters.shuffle}
+        />
       )}
     </div>
   );

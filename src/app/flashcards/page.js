@@ -4,7 +4,9 @@ import VisuallyHidden from "@/components/VisuallyHidden";
 
 import { page } from "./page.module.css";
 
-export default async function CardsPage() {
+export default async function CardsPage({ searchParams }) {
+  const filters = await searchParams;
+
   return (
     <main className={page}>
       <VisuallyHidden>
@@ -21,7 +23,7 @@ export default async function CardsPage() {
         <VisuallyHidden>
           <h2>View your flashcards</h2>
         </VisuallyHidden>
-        <FlashcardListView />
+        <FlashcardListView filters={filters} />
       </section>
     </main>
   );

@@ -7,12 +7,12 @@ import { base, loadMoreBtn } from "./LoadMoreClient.module.css";
 import Button from "../Button";
 import FlashcardList from "../FlashcardList";
 
-function LoadMoreClient({ initialOffset }) {
+function LoadMoreClient({ initialOffset, shuffle }) {
   const [flashcards, setFlashcards] = React.useState([]);
   const [offset, setOffset] = React.useState(initialOffset);
 
   async function handleLoadMore() {
-    const res = await listFlashcards(offset);
+    const res = await listFlashcards(offset, shuffle);
 
     setFlashcards((prev) => [...prev, ...res.flashcards]);
     setOffset(res.nextOffset);
