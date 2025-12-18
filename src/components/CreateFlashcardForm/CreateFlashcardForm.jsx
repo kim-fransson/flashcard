@@ -11,9 +11,10 @@ import Button from "../Button";
 import TextField from "../TextField";
 
 import styles from "./CreateFlashcardForm.module.css";
+import { toast } from "@/helpers";
 
 function CreateFlashcardForm() {
-  const [_state, formAction, pending] = React.useActionState(
+  const [state, formAction, pending] = React.useActionState(
     createFlashcard,
     { success: false }
   );
@@ -22,6 +23,12 @@ function CreateFlashcardForm() {
     delay: 500,
     minDuration: 200,
   });
+
+  React.useEffect(() => {
+    if (state.success) {
+      toast("Card successfully created.");
+    }
+  }, [state]);
 
   return (
     <Form className={styles.base} action={formAction}>

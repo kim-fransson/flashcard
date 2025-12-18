@@ -3,6 +3,7 @@ import "./globals.css";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
+import { TOAST_DURATION_IN_MS } from "@/constants";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -24,7 +25,10 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
         </MaxWidthWrapper>
-        <Toaster position='top-right' />
+        <Toaster
+          position='top-right'
+          duration={TOAST_DURATION_IN_MS}
+        />
       </body>
     </html>
   );
