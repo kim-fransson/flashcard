@@ -38,8 +38,6 @@ const listFlashcards = async ({
 }) => {
   let flashcards = [];
 
-  console.log({ hideMastered });
-
   if (seed !== null) {
     const randomOrderBy = getSeededOrder(seed);
 

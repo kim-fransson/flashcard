@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 async function createFlashcard(_prevState, formData) {
+  console.log({ formData });
   const { question, answer, category } = Object.fromEntries(formData);
 
   const flashcard = await prisma.flashcard.create({

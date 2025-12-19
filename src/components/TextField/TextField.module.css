@@ -19,6 +19,7 @@
   padding: 16px;
   gap: 8px;
   width: 100%;
+  outline: 0px;
 
   height: 3.375rem;
 
@@ -34,9 +35,26 @@
     font-weight: 400;
     color: var(--placeholder);
   }
+
+  &:focus {
+    outline: 2px solid var(--focus);
+    --border: var(--focus);
+  }
+
+  &.error {
+    --border: var(--error);
+  }
 }
 
 .multiline {
   min-height: 6.25rem;
   resize: vertical;
+}
+
+.errorText {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--error);
+  font-size: 0.875rem;
 }

@@ -19,6 +19,14 @@ function CreateFlashcardForm() {
     { success: false }
   );
 
+  const [values, setValues] = React.useState({
+    question: "",
+    answer: "",
+    category: "",
+  });
+
+  const [errors, setErrors] = React.useState({});
+
   const showLoading = useSpinDelay(pending, {
     delay: 500,
     minDuration: 200,
@@ -27,31 +35,79 @@ function CreateFlashcardForm() {
   React.useEffect(() => {
     if (state.success) {
       toast("Card successfully created.");
+      setValues({
+        question: "",
+        answer: "",
+        category: "",
+      });
     }
   }, [state]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" })); // clear error on change
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const newErrors = {};
+
+    const question =
+      formData.get("question")?.toString().trim() || "";
+    const answer = formData.get("answer")?.toString().trim() || "";
+    const category =
+      formData.get("category")?.toString().trim() || "";
+
+    if (!question) {
+      newErrors.question = "Please enter a question";
+    }
+    if (!answer) {
+      newErrors.answer = "Please enter an answer";
+    }
+    if (!category) {
+      newErrors.category = "Please enter a category";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    React.startTransition(() => {
+      formAction(formData);
+    });
+  };
+
   return (
-    <Form className={styles.base} action={formAction}>
+    <Form className={styles.base} onSubmit={handleSubmit}>
       <TextField
         label='Question'
         name='question'
         placeholder='e.g., What is the capital of France?'
-        required={true}
+        value={values.question}
+        onChange={handleChange}
+        error={errors.question}
       />
 
       <TextField
         label='Answer'
         name='answer'
         placeholder='e.g., Paris'
-        required={true}
         multiline={true}
+        value={values.answer}
+        onChange={handleChange}
+        error={errors.answer}
       />
 
       <TextField
         label='Category'
         name='category'
         placeholder='e.g., Geography'
-        required={true}
+        value={values.category}
+        onChange={handleChange}
+        error={errors.category}
       />
 
       <div>

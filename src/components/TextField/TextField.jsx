@@ -1,14 +1,8 @@
-"use client";
-
 import React from "react";
 
-import {
-  base,
-  label as labelStyles,
-  input as inputStyles,
-  multiline as multilineStyles,
-} from "./TextField.module.css";
+import styles from "./TextField.module.css";
 import clsx from "clsx";
+import { CircleAlert } from "lucide-react";
 
 function TextField({
   label,
@@ -16,6 +10,7 @@ function TextField({
   placeholder,
   onChange,
   multiline = false,
+  error = "",
   ...delegated
 }) {
   const id = React.useId();
@@ -24,19 +19,30 @@ function TextField({
   const Template = multiline ? "textarea" : "input";
 
   return (
-    <div className={base}>
-      <label className={labelStyles} htmlFor={componentId}>
+    <div className={styles.base}>
+      <label className={styles.label} htmlFor={componentId}>
         {label}
       </label>
 
       <Template
         id={componentId}
-        className={clsx(inputStyles, multiline && multilineStyles)}
+        className={clsx(
+          styles.input,
+          multiline && styles.multiline,
+          error && styles.error
+        )}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         {...delegated}
       />
+
+      {error && (
+        <div className={styles.errorText} aria-live='polite'>
+          <CircleAlert size={16} />
+          {error}
+        </div>
+      )}
     </div>
   );
 }
