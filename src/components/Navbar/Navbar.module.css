@@ -4,38 +4,3 @@
   justify-content: space-between;
   margin-bottom: 24px;
 }
-
-.pageLinksWrapper {
-  --background: var(--neutral-0);
-  --border: var(--neutral-900);
-  --shadow: var(--neutral-900);
-
-  display: flex;
-  padding: 4px;
-  gap: 4px;
-
-  background: var(--background);
-  border: 1px solid var(--border);
-  box-shadow: 1px 2px 0px var(--shadow);
-  border-radius: 999px;
-}
-
-.pageLink {
-  --foreground: var(--neutral-900);
-  --background: transparent;
-  --border: transparent;
-  padding: 10px 12px;
-
-  font-weight: 600;
-  color: var(--foreground);
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  text-decoration: none;
-
-  &.active {
-    --background: var(--primary);
-    --foreground: var(--primary-foreground);
-    --border: var(--neutral-900);
-  }
-}
