@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import seedrandom from "seedrandom";
 import _ from "lodash";
 import { KNOWN_COUNT_MAX } from "@/constants";
+import { shuffleWithSeed } from "@/utils";
 
 const LIMIT = 12;
 
@@ -56,7 +57,7 @@ const listFlashcards = async ({
       },
     });
 
-    flashcards = _.shuffle(flashcards);
+    flashcards = shuffleWithSeed(flashcards, seed);
   } else {
     flashcards = await prisma.flashcard.findMany({
       take: LIMIT,
