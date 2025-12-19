@@ -4,6 +4,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
 import { TOAST_DURATION_IN_MS } from "@/constants";
+import RespectMotionPreferences from "@/components/RespectMotionPreferences";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -19,17 +20,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
-      <body className={`${poppins.variable}`}>
-        <MaxWidthWrapper>
-          <Navbar />
-          {children}
-        </MaxWidthWrapper>
-        <Toaster
-          position='top-right'
-          duration={TOAST_DURATION_IN_MS}
-        />
-      </body>
-    </html>
+    <RespectMotionPreferences>
+      <html lang='en'>
+        <body className={`${poppins.variable}`}>
+          <MaxWidthWrapper>
+            <Navbar />
+            {children}
+          </MaxWidthWrapper>
+          <Toaster
+            position='top-right'
+            duration={TOAST_DURATION_IN_MS}
+          />
+        </body>
+      </html>
+    </RespectMotionPreferences>
   );
 }
