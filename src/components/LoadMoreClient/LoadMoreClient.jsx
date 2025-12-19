@@ -3,16 +3,20 @@
 import listFlashcards from "@/actions/list-flashcards";
 import React from "react";
 
-import { base, loadMoreBtn } from "./LoadMoreClient.module.css";
+import { base } from "./LoadMoreClient.module.css";
 import Button from "../Button";
 import FlashcardList from "../FlashcardList";
 
-function LoadMoreClient({ initialOffset, shuffle }) {
+function LoadMoreClient({ initialOffset, filters }) {
   const [flashcards, setFlashcards] = React.useState([]);
   const [offset, setOffset] = React.useState(initialOffset);
 
   async function handleLoadMore() {
-    const res = await listFlashcards(offset, shuffle);
+    const res = await listFlashcards({
+      offset,
+      seed: filters.seed,
+      hideMastered: filters.hideMastered === "true",
+    });
 
     setFlashcards((prev) => [...prev, ...res.flashcards]);
     setOffset(res.nextOffset);
@@ -24,12 +28,12 @@ function LoadMoreClient({ initialOffset, shuffle }) {
         <FlashcardList flashcards={flashcards} />
       )}
 
-      {offset !== null && (
-        <div className={loadMoreBtn}>
-          <Button variant='secondary' onClick={handleLoadMore}>
-            Load More
-          </Button>
-        </div>
+      {offset !== null ? (
+        <Button variant='secondary' onClick={handleLoadMore}>
+          Load More
+        </Button>
+      ) : (
+        <p>No more cards to load</p>
       )}
     </div>
   );

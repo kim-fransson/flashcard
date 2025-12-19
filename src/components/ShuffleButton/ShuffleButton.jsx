@@ -15,17 +15,11 @@ function ShuffleButton() {
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  const memoizedCreateQueryString = React.useCallback(
-    (name, value) => {
-      return createQueryString(searchParams, name, value);
-    },
-    [searchParams]
-  );
-
   function handleShuffle() {
     const seed = Math.floor(Math.random() * 1_000_000_000);
     router.push(
-      pathName + "?" + memoizedCreateQueryString("shuffle", seed)
+      pathName + "?" + createQueryString(searchParams, "seed", seed),
+      { scroll: false }
     );
   }
 

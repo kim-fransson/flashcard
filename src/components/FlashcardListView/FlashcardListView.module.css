@@ -8,3 +8,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.actionsGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

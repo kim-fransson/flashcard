@@ -6,13 +6,17 @@ import LoadMoreClient from "../LoadMoreClient";
 import styles from "./FlashcardListView.module.css";
 import FlashcardList from "../FlashcardList";
 import ShuffleButton from "../ShuffleButton";
+import HideMasteredCheckbox from "../HideMasteredCheckbox";
 
 async function FlashcardListView({ filters }) {
   const {
     flashcards: initialFlashcards,
     nextOffset,
     timestamp,
-  } = await listFlashcards(0, filters.shuffle);
+  } = await listFlashcards({
+    seed: filters.seed,
+    hideMastered: filters.hideMastered === "true",
+  });
 
   if (initialFlashcards.length === 0) {
     return (
@@ -29,18 +33,18 @@ async function FlashcardListView({ filters }) {
   return (
     <div className={styles.base}>
       <div className={styles.actions}>
-        <div></div>
+        <div className={styles.actionsGroup}>
+          <HideMasteredCheckbox />
+        </div>
         <ShuffleButton />
       </div>
       <FlashcardList flashcards={initialFlashcards} />
 
-      {nextOffset !== null && (
-        <LoadMoreClient
-          key={timestamp}
-          initialOffset={nextOffset}
-          shuffle={filters.shuffle}
-        />
-      )}
+      <LoadMoreClient
+        key={timestamp}
+        initialOffset={nextOffset}
+        filters={filters}
+      />
     </div>
   );
 }

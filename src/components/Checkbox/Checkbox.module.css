@@ -1,0 +1,48 @@
+.base {
+  --foreground: var(--neutral-900);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxWrapper {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.nativeCheckbox {
+  position: absolute;
+  inset: 0;
+  all: unset;
+}
+
+.front {
+  --background: var(--neutral-0);
+  --border: var(--neutral-900);
+  position: absolute;
+  inset: 0;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: inherit;
+  display: grid;
+  place-content: center;
+
+  &.checked {
+    --background: var(--primary);
+  }
+}
+
+.back {
+}
+
+.label {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.iconWrapper {
+  /* optical alignment */
+  margin-top: 1px;
+}
