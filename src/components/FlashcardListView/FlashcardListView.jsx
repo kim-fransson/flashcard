@@ -7,6 +7,7 @@ import styles from "./FlashcardListView.module.css";
 import FlashcardList from "../FlashcardList";
 import ShuffleButton from "../ShuffleButton";
 import HideMasteredCheckbox from "../HideMasteredCheckbox";
+import ResetFiltersButton from "../ResetFiltersButton";
 
 async function FlashcardListView({ filters }) {
   const {
@@ -36,7 +37,10 @@ async function FlashcardListView({ filters }) {
         <div className={styles.actionsGroup}>
           <HideMasteredCheckbox />
         </div>
-        <ShuffleButton />
+        <div className={styles.actionsGroup}>
+          <ShuffleButton />
+          <ResetFiltersButton />
+        </div>
       </div>
       <FlashcardList flashcards={initialFlashcards} />
 
