@@ -74,6 +74,7 @@ const listFlashcards = async ({
   const timestamp = new Date();
 
   return {
+    success: true,
     flashcards,
     nextOffset,
     timestamp,

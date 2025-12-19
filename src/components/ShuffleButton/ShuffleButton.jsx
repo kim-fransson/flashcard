@@ -8,7 +8,7 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import { createQueryString } from "@/helpers";
+import { createQueryString, toast } from "@/helpers";
 
 function ShuffleButton() {
   const router = useRouter();
@@ -21,6 +21,7 @@ function ShuffleButton() {
       pathName + "?" + createQueryString(searchParams, "seed", seed),
       { scroll: false }
     );
+    toast("Cards shuffled.");
   }
 
   return (

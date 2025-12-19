@@ -6,20 +6,32 @@ import React from "react";
 import { base } from "./LoadMoreClient.module.css";
 import Button from "../Button";
 import FlashcardList from "../FlashcardList";
+import { useSpinDelay } from "spin-delay";
 
 function LoadMoreClient({ initialOffset, filters }) {
   const [flashcards, setFlashcards] = React.useState([]);
   const [offset, setOffset] = React.useState(initialOffset);
 
-  async function handleLoadMore() {
-    const res = await listFlashcards({
-      offset,
-      seed: filters.seed,
-      hideMastered: filters.hideMastered === "true",
-    });
+  const [pending, startTransition] = React.useTransition();
 
-    setFlashcards((prev) => [...prev, ...res.flashcards]);
-    setOffset(res.nextOffset);
+  const showLoading = useSpinDelay(pending, {
+    delay: 500,
+    minDuration: 200,
+  });
+
+  async function handleLoadMore() {
+    startTransition(async () => {
+      const result = await listFlashcards({
+        offset,
+        seed: filters.seed,
+        hideMastered: filters.hideMastered === "true",
+      });
+
+      if (result.success) {
+        setFlashcards((prev) => [...prev, ...result.flashcards]);
+        setOffset(result.nextOffset);
+      }
+    });
   }
 
   return (
@@ -30,7 +42,7 @@ function LoadMoreClient({ initialOffset, filters }) {
 
       {offset !== null ? (
         <Button variant='secondary' onClick={handleLoadMore}>
-          Load More
+          {showLoading ? "Loading..." : "Load More"}
         </Button>
       ) : (
         <p>No more cards to load</p>

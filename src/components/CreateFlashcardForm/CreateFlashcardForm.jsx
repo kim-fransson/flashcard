@@ -13,18 +13,19 @@ import TextField from "../TextField";
 import styles from "./CreateFlashcardForm.module.css";
 import { toast } from "@/helpers";
 
+const defaultValues = {
+  question: "",
+  answer: "",
+  category: "",
+};
+
 function CreateFlashcardForm() {
   const [state, formAction, pending] = React.useActionState(
     createFlashcard,
     { success: false }
   );
 
-  const [values, setValues] = React.useState({
-    question: "",
-    answer: "",
-    category: "",
-  });
-
+  const [values, setValues] = React.useState(defaultValues);
   const [errors, setErrors] = React.useState({});
 
   const showLoading = useSpinDelay(pending, {
@@ -35,18 +36,14 @@ function CreateFlashcardForm() {
   React.useEffect(() => {
     if (state.success) {
       toast("Card successfully created.");
-      setValues({
-        question: "",
-        answer: "",
-        category: "",
-      });
+      setValues(defaultValues);
     }
   }, [state]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" })); // clear error on change
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = (e) => {

@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { EllipsisVertical, SquarePen, Trash2 } from "lucide-react";
+import { SquarePen, Trash2 } from "lucide-react";
 import {
-  Button as RACButton,
   MenuTrigger,
   Popover,
   Menu,
@@ -11,7 +10,7 @@ import {
   Pressable,
 } from "react-aria-components";
 
-import { menu, menuItem } from "./FlashcardMenu.module.css";
+import styles from "./FlashcardMenu.module.css";
 import IconButton from "../IconButton";
 
 function FlashcardMenu({ onDelete, onEdit }) {
@@ -25,12 +24,12 @@ function FlashcardMenu({ onDelete, onEdit }) {
       </Pressable>
 
       <Popover placement='bottom right'>
-        <Menu className={menu}>
-          <MenuItem className={menuItem} onAction={onEdit}>
+        <Menu className={styles.menu}>
+          <MenuItem className={styles.menuItem} onAction={onEdit}>
             <SquarePen />
             Edit
           </MenuItem>
-          <MenuItem className={menuItem} onAction={onDelete}>
+          <MenuItem className={styles.menuItem} onAction={onDelete}>
             <Trash2 />
             Delete
           </MenuItem>

@@ -3,6 +3,7 @@ import FlashcardListView from "@/components/FlashcardListView";
 import VisuallyHidden from "@/components/VisuallyHidden";
 
 import { page } from "./page.module.css";
+import { Suspense } from "react";
 
 export default async function CardsPage({ searchParams }) {
   const filters = await searchParams;
@@ -23,7 +24,9 @@ export default async function CardsPage({ searchParams }) {
         <VisuallyHidden>
           <h2>View your flashcards</h2>
         </VisuallyHidden>
-        <FlashcardListView filters={filters} />
+        <Suspense fallback={<p>Loading...</p>}>
+          <FlashcardListView filters={filters} />
+        </Suspense>
       </section>
     </main>
   );
