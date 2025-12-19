@@ -1,5 +1,5 @@
 .base {
-  --hover-distance: 4px;
+  --hover-distance: 2px;
   position: relative;
   border-radius: 999px;
   cursor: pointer;

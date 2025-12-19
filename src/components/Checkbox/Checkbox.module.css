@@ -1,8 +1,10 @@
 .base {
   --foreground: var(--neutral-900);
+  --hover-distance: 1px;
   display: flex;
   align-items: center;
   gap: 8px;
+  isolation: isolate;
 }
 
 .checkboxWrapper {
@@ -13,9 +15,43 @@
 }
 
 .nativeCheckbox {
+  all: unset;
   position: absolute;
   inset: 0;
-  all: unset;
+  cursor: pointer;
+  border-radius: inherit;
+  /* For click and hover events to trigger */
+  z-index: 2;
+
+  &::after {
+    --tap-increment: -14px;
+    content: "";
+    position: absolute;
+    top: var(--tap-increment);
+    left: var(--tap-increment);
+    right: var(--tap-increment);
+    bottom: var(--tap-increment);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) {
+    &:hover + .front {
+      transform: translate(
+        calc(-1 * var(--hover-distance)),
+        calc(-1 * var(--hover-distance))
+      );
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover + .front {
+      transition: transform 150ms ease-out;
+    }
+  }
 }
 
 .front {
@@ -28,18 +64,29 @@
   border-radius: inherit;
   display: grid;
   place-content: center;
+  /* Should be placed over .back  */
+  z-index: 1;
 
   &.checked {
     --background: var(--primary);
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 300ms ease-in;
+  }
 }
 
 .back {
+  background: var(--neutral-900);
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
 }
 
 .label {
   color: var(--foreground);
   font-weight: 500;
+  cursor: pointer;
 }
 
 .iconWrapper {

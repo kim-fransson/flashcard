@@ -28,8 +28,11 @@ function Checkbox({ checked, onChange, label, ...delegated }) {
             </span>
           )}
         </div>
+        <div className={styles.back} />
       </div>
-      <label htmlFor={componentId}>{label}</label>
+      <label className={styles.label} htmlFor={componentId}>
+        {label}
+      </label>
     </div>
   );
 }
